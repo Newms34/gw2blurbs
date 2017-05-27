@@ -16,3 +16,9 @@ body {
 .panel{
 	padding:0;
 }
+#creds{
+	position:fixed;
+	bottom:0;
+	background: #fff;
+	padding:3px;
+}
