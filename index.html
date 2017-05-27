@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GW2 Story Blurb Creator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body ng-app='storyApp' ng-init='startWrd="the"' ng-controller='story-cont' style='background:url({{bg}}),#000;background-size:cover; background-position:0% 80%'>
+    <div class='panel panel-danger col-md-10 col-md-offset-1'>
+        <div class='panel-heading'>
+            <h3>My Story</h3></div>
+        <div class='panel-body'>
+            <div class='form-control row'>
+                <label class='col-md-2' for='startWrd'>Starting word:</label>
+                <select class='col-md-4' id='startWrd' ng-model='startWrd' ng-options='w as w for w in fullWords|filter:wrdFilt'></select>
+            </div>
+            <div class='form-control row'>
+                <label class='col-md-2' for='startFilt'>Optional filter:</label>
+                <input type="text" class='col-md-4' id='startFilt' ng-model='wrdFilt' placeholder = 'Optionally filter the word list'>
+            </div>
+            <div class='form-control row'>
+                <label class='col-md-2' for='blurbLen'>Blurb Length:</label>
+                <input class='col-md-2' id='blurbLen' type='number' ng-model='remWrdsStart'>
+            </div>
+            <div class='form-control row'>
+                <label class='col-md-2' for='inclPrd'>Include Period:</label>
+                <input class='col-md-2' id='inclPrd' type='checkbox' ng-model='prd' ng-change='processDescs()'>
+                <h6 class='col-md-7 text-muted'> Including periods will make matches less accurate, but more 'readable'</h6>
+            </div>
+            <div class='form-control row'>
+                <label class='col-md-2' for='sampSize'>Subsample Size:</label>
+                <input class='col-md-2' id='sampSize' type='number' ng-model='sampSize' ng-change='processDescs()'>
+                <h6 class='col-md-7 text-muted'> Larger sample sizes are more accurate, but less creative. Smaller sample sizes allow greater text diversity.</h6>
+            </div>
+            <br>
+            <button ng-click='remWrds = remWrdsStart;currWrd = startWrd;fullOut = "";addWord()' class='btn btn-danger col-md-4 col-md-offset-4'>Run!</button><br><br>
+            <hr> 
+            <h4>Result:</h4>
+            {{fullOut}}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="./js/source.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

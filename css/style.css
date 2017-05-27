@@ -1,0 +1,18 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#main {
+  background: #ffefe9;
+  width: 80%;
+  position: fixed;
+  padding: 5px;
+  left: 10%;
+  box-shadow: 2px 2px 5px #000;
+}
+.panel{
+	padding:0;
+}
